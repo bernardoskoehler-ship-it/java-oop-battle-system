@@ -1,4 +1,4 @@
-# Java OOP Battle System
+# Java OOP RPG
 
 This project is a simple RPG-style battle system built in Java to practice Object-Oriented Programming (OOP).
 
