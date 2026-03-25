@@ -1,6 +1,3 @@
-# java-oop-battle-system
-Simple RPG battle system in Java using OOP concepts like abstraction, inheritance and polymorphism.
-
 # Java OOP Battle System
 
 This project is a simple RPG-style battle system built in Java to practice Object-Oriented Programming (OOP).
