@@ -30,13 +30,6 @@ This demonstrates how different objects can share the same interface but behave 
 
 This project is part of my Java learning journey, focused on mastering OOP before moving into backend development.
 
-## 🔜 Next Steps
-
-* Add turn-based battle system
-* Improve encapsulation
-* Create battle controller class
-* Expand abilities and mechanics
-
 ---
 
 Made as part of my programming studies 🚀 
