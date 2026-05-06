@@ -16,10 +16,8 @@ abstract class Personagem {
     private int estaminaMaxima = 20;
 
     private HashMap<String, Armas> armas = new HashMap<>();
-
     public boolean escolherArma(String nome) {
         nome = nome.toLowerCase();
-
         try {
             armas.put(nome, new Armas(nome));
             return true;
@@ -30,8 +28,19 @@ abstract class Personagem {
         }
     }
 
-
     private HashMap<String, Integer, Integer> armadura = new HashMap<>();
+    public boolean escolherArmadura(String nome) {
+        nome = nome.toLowerCase();
+        try {
+            armadura.put(nome, new Armaduras(nome));
+            return true;
+
+        } catch (IllegalArgumentException e) {
+            System.out.println("Armadura inexistente");
+            return false;
+        }
+    }
+
 
     Personagem(String nome) {
         setNome(nome);
