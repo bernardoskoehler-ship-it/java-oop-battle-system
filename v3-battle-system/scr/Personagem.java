@@ -10,11 +10,28 @@ abstract class Personagem {
     private int vida;
     private int vidaMaxima = 30;
 
+    private int armadura;
+
     private int estamina;
     private int estaminaMaxima = 20;
 
-    HashMap<String, Integer> armas = new HashMap<>();
-    HashMap<String, Integer> armadura = new HashMap<>();
+    private HashMap<String, Armas> armas = new HashMap<>();
+
+    public boolean escolherArma(String nome) {
+        nome = nome.toLowerCase();
+
+        try {
+            armas.put(nome, new Armas(nome));
+            return true;
+
+        } catch (IllegalArgumentException e) {
+            System.out.println("Arma inexistente");
+            return false;
+        }
+    }
+
+
+    private HashMap<String, Integer, Integer> armadura = new HashMap<>();
 
     Personagem(String nome) {
         setNome(nome);
@@ -25,8 +42,8 @@ abstract class Personagem {
         if(nome != null && !nome.trim().isEmpty()) {
             this.nome = nome;
         }else {
-            System.out.println("Nome inserido invalido, nome padrao *PG* adotado!");
-            this.nome = nome;
+            System.out.println("Nome inserido invalido, nome padrao *Jogador* adotado!");
+            this.nome = "Jogador";
         }
     }
     public String getNome() {
@@ -35,6 +52,10 @@ abstract class Personagem {
 
     public int getVida() {
         return vida;
+    }
+
+    public int getEstamina() {
+        return estamina;
     }
 
     public boolean estaVivo() {
@@ -56,6 +77,11 @@ abstract class Personagem {
             vida -= vida - vidaMaxima;
         }
     }
+
+    private int calcularDano(int dano) {
+
+    }
+
 
 
 
