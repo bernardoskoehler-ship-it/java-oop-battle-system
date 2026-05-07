@@ -1,5 +1,4 @@
 import java.util.HashMap;
-import java.util.Map;
 import java.util.Random;
 
 abstract class Personagem {
@@ -46,6 +45,7 @@ abstract class Personagem {
     Personagem(String nome) {
         setNome(nome);
         vida = random.nextInt(21) + 10;
+        estamina = getEstaminaMaxima();
     }
 
     private void setNome(String nome) {
@@ -163,56 +163,40 @@ abstract class Personagem {
     }
 
     public boolean ataqueFraco(Personagem alvo) {
-
-    Armas armaAtual = arma.get(nomeArma);
-
-    if (armaAtual == null) {
-        System.out.println("Nenhuma arma equipada!");
-        return false;
+        Armas armaAtual = arma.get(nomeArma);
+        
+        if (armaAtual == null) {
+            System.out.println("Nenhuma arma equipada!");
+            return false;
+        }
+        
+        if (!podeAtacar(alvo,
+        armaAtual.getGastoEstamina())) {
+            
+            return false;
+        }
+        
+        alvo.calcularDano(armaAtual.getDano());
+        removerEstamina(armaAtual.getGastoEstamina());   
+        return true;
     }
 
-    if (!podeAtacar(alvo,
-            armaAtual.getGastoEstamina())) {
-
-        return false;
+    public boolean ataqueForte(Personagem alvo) {
+        Armas armaAtual = arma.get(nomeArma);
+        
+        if (armaAtual == null) {
+            System.out.println("Nenhuma arma equipada!");
+            return false;
+        }
+        
+        if (!podeAtacar(alvo,
+        armaAtual.getGastoEstamina() + 5)) {
+            
+            return false;
+        }
+        
+        alvo.calcularDano(armaAtual.getDano() + 5);
+        removerEstamina(armaAtual.getGastoEstamina() + 5);
+        return true;
     }
-
-    alvo.calcularDano(armaAtual.getDano());
-
-    removerEstamina(
-            armaAtual.getGastoEstamina()
-    );
-
-    return true;
-}
-public boolean ataqueForte(Personagem alvo) {
-
-    Armas armaAtual = arma.get(nomeArma);
-
-    if (armaAtual == null) {
-        System.out.println("Nenhuma arma equipada!");
-        return false;
-    }
-
-    if (!podeAtacar(alvo,
-            armaAtual.getGastoEstamina() + 5)) {
-
-        return false;
-    }
-
-    alvo.calcularDano(
-            armaAtual.getDano() + 5
-    );
-
-    removerEstamina(
-            armaAtual.getGastoEstamina() + 5
-    );
-
-    return true;
-}
-
-
-
-
-
 }
