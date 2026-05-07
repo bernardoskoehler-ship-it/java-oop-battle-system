@@ -3,7 +3,7 @@ public class Armaduras {
     private int durabilidade;
     private int gastoEstamina;
 
-    public Armadura(String nome) {
+    public Armaduras(String nome) {
         nome = nome.toLowerCase();
 
         if (nome.equals("leve")) {
@@ -25,5 +25,14 @@ public class Armaduras {
 
     public int getDurabilidade() {
         return durabilidade;
+    }
+    public int getGastoEstamina() {
+        return gastoEstamina;
+    }
+    public boolean temArmadura() {
+        return durabilidade > 0;
+    }
+    public void diminuirDurabilidade(int valor) {
+        durabilidade -= valor;
     }
 }
