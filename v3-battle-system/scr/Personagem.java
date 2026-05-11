@@ -26,6 +26,10 @@ abstract class Personagem {
             return false;
         }
     }
+    protected void equiparArma(String nome, Armas armaNova) {
+        arma.put(nome, armaNova);
+        nomeArma = nome;
+    }
     private HashMap<String, Armaduras> armadura = new HashMap<>();
     private String nomeArmadura;
     public boolean escolherArmadura(String nome) {
@@ -39,6 +43,10 @@ abstract class Personagem {
             System.out.println("Armadura inexistente");
             return false;
         }
+    }
+    protected void equiparArmadura(String nome, Armaduras armaduraNova) {
+        armadura.put(nome, armaduraNova);
+        nomeArmadura = nome;
     }
 
 
@@ -128,24 +136,24 @@ abstract class Personagem {
 
     private void calcularDano(int dano) {
         int numero = random.nextInt(10) + 1;
-        
+
         if (numero >= 8) {
             System.out.println("CRÍTICO!");
             dano *= 2;
         }
-        
+
         Armaduras armaduraAtual = armadura.get(nomeArmadura);
-        
-        
+
+
         if (armaduraAtual != null && armaduraAtual.temArmadura()) {
-            
+
             armaduraAtual.diminuirDurabilidade((int) (dano * 0.7));
-            
-            if (armaduraAtual.getDurabilidade() < 0) {
-                
+
+            if (armaduraAtual.getDurabilidade() <= 0) {
+
                 removerVida(Math.abs(armaduraAtual.getDurabilidade()));
             }
-            
+
             removerVida((int) (dano * 0.3));
             return;
         }
@@ -164,37 +172,37 @@ abstract class Personagem {
 
     public boolean ataqueFraco(Personagem alvo) {
         Armas armaAtual = arma.get(nomeArma);
-        
+
         if (armaAtual == null) {
             System.out.println("Nenhuma arma equipada!");
             return false;
         }
-        
+
         if (!podeAtacar(alvo,
-        armaAtual.getGastoEstamina())) {
-            
+                armaAtual.getGastoEstamina())) {
+
             return false;
         }
-        
+
         alvo.calcularDano(armaAtual.getDano());
-        removerEstamina(armaAtual.getGastoEstamina());   
+        removerEstamina(armaAtual.getGastoEstamina());
         return true;
     }
 
     public boolean ataqueForte(Personagem alvo) {
         Armas armaAtual = arma.get(nomeArma);
-        
+
         if (armaAtual == null) {
             System.out.println("Nenhuma arma equipada!");
             return false;
         }
-        
+
         if (!podeAtacar(alvo,
-        armaAtual.getGastoEstamina() + 5)) {
-            
+                armaAtual.getGastoEstamina() + 5)) {
+
             return false;
         }
-        
+
         alvo.calcularDano(armaAtual.getDano() + 5);
         removerEstamina(armaAtual.getGastoEstamina() + 5);
         return true;
