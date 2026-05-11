@@ -207,4 +207,11 @@ abstract class Personagem {
         removerEstamina(armaAtual.getGastoEstamina() + 5);
         return true;
     }
+    public void mostrarStatus() {
+        System.out.println("Nome: " +getNome());
+        System.out.println("Vida: " +getVida() +"/" +getVidaMaxima());
+        System.out.println("Estamina: " +getEstamina() +"/" +getEstaminaMaxima());
+        System.out.println("Arma: " +nomeArma);
+        System.out.println("Armadura: " +nomeArmadura);
+    }
 }
