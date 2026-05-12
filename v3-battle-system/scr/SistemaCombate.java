@@ -9,7 +9,7 @@ public class SistemaCombate {
             System.out.println("Ataque Forte: dano " +(jogador.getDanoArma()+5) +" gasto de estamina " +(jogador.getCustoEstaminaArma()+5));
             System.out.println("Descansar");
             System.out.println("Curar");
-            System.out.println("Analizar");
+            System.out.println("Analisar");
             System.out.println("Status");
             System.out.println("");
 
