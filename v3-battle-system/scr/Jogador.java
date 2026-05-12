@@ -15,7 +15,7 @@ public class Jogador extends Personagem {
                 return descansar();
             case "curar":
                 return curar();
-            case "analizar":
+            case "analisar":
                 analizarInimigo(alvo);
                 return false;
             case "status":
