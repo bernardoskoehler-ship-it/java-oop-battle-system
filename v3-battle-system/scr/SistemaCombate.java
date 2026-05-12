@@ -5,8 +5,8 @@ public class SistemaCombate {
 
     public void iniciarCombate(Jogador jogador, Inimigo inimigo) {
         while(jogador.estaVivo() && inimigo.estaVivo()) {
-            System.out.println("Ataque Fraco: " +jogador.getDanoArma());
-            System.out.println("Ataque Forte: " +(jogador.getDanoArma()+5));
+            System.out.println("Ataque Fraco: dano " +jogador.getDanoArma());
+            System.out.println("Ataque Forte: dano " +(jogador.getDanoArma()+5));
             System.out.println("Descansar");
             System.out.println("Curar");
             System.out.println("Analizar");
