@@ -8,17 +8,16 @@ public class Jogador extends Personagem {
         acao = acao.toLowerCase();
         switch(acao) {
             case "ataque fraco":
-                ataqueFraco(alvo);
-                return true;
+                return ataqueFraco(alvo);
             case "ataque forte":
-                ataqueForte(alvo);
-                return true;
+                return ataqueForte(alvo);
             case "descansar":
-                descansar();
-                return true;
+                return descansar();
+            case "curar":
+                return curar();
             case "status":
                 mostrarStatus();
-                return true;
+                return false;
             default:
                 return false;
         }
