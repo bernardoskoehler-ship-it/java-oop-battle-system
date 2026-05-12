@@ -269,6 +269,7 @@ abstract class Personagem {
         int numero = random.nextInt(5) + 5;
         adicionarVida(numero);
         pocoesDeCura --;
+        System.out.println(getNome() +" curou " +numero +" de vida!");
         return true;
     }
 }
