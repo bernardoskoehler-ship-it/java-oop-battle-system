@@ -207,7 +207,6 @@ abstract class Personagem {
         }
 
         if (!podeAtacar(alvo, getCustoEstaminaArma())) {
-
             return false;
         }
 
@@ -226,7 +225,6 @@ abstract class Personagem {
         }
 
         if (!podeAtacar(alvo,getCustoEstaminaArma() + 5)) {
-
             return false;
         }
 
