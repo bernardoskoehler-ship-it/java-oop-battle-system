@@ -11,17 +11,20 @@ public class SistemaCombate {
             System.out.println("Curar");
             System.out.println("Analizar");
             System.out.println("Status");
+            System.out.println("");
 
             String acao = scanner.nextLine();
             if(!jogador.agir(acao, inimigo)) {
                 continue;
             }
             System.out.println("\n=== NOVO TURNO ===");
+            System.out.println("");
             if(!inimigo.estaVivo()) {
                 break;
             }
             inimigo.agir(jogador);
             System.out.println("\n=== NOVO TURNO ===");
+            System.out.println("");
         }
         System.out.println("Fim do duelo!");
     }
