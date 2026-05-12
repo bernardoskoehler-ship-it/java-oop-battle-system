@@ -8,6 +8,7 @@ public class SistemaCombate {
             System.out.println("Ataque Fraco: " +jogador.getDanoArma());
             System.out.println("Ataque Forte: " +(jogador.getDanoArma()+5));
             System.out.println("Descansar");
+            System.out.println("Curar");
             System.out.println("Status");
 
             String acao = scanner.nextLine();
