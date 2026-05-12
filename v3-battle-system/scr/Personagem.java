@@ -167,9 +167,12 @@ abstract class Personagem {
             System.out.println("CRÍTICO!");
             dano *= 2;
         }
+        if (numero <= 3) {
+            System.out.println("MISS!");
+            dano = 0;
+        }
 
         Armaduras armaduraAtual = armadura.get(nomeArmadura);
-
 
         if (armaduraAtual != null && armaduraAtual.temArmadura()) {
 
