@@ -13,6 +13,7 @@ This project was created to practice Java fundamentals while building a function
 - Weapons with different damage and stamina costs
 - Armor system with durability
 - Critical hit system
+- Miss hit system
 - Stamina management
 - Healing system
 - Enemy AI behavior
