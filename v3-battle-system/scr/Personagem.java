@@ -245,7 +245,7 @@ abstract class Personagem {
         System.out.println("Arma: " +nomeArma +" | Dano: " +getDanoArma());
         System.out.println("Armadura: " +nomeArmadura +" | Durabilidade: " +getDurabilidadeArmadura());
     }
-    public void analizarInimigo(Personagem inimigo) {
+    public void analisarInimigo(Personagem inimigo) {
         System.out.println("Nome: " +inimigo.getNome());
         System.out.println("Vida: " +inimigo.getVida() +"/" +inimigo.getVidaMaxima());
         System.out.println("Estamina: " +inimigo.getEstamina() +"/" +inimigo.getEstaminaMaxima());
