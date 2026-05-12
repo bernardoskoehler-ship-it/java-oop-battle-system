@@ -234,12 +234,20 @@ abstract class Personagem {
         System.out.println(getNome() +" deu um Ataque Forte em " +alvo.getNome() +", ficando com " +alvo.getVida() +" de vida");
         return true;
     }
+    
     public void mostrarStatus() {
         System.out.println("Nome: " +getNome());
         System.out.println("Vida: " +getVida() +"/" +getVidaMaxima());
         System.out.println("Estamina: " +getEstamina() +"/" +getEstaminaMaxima());
         System.out.println("Arma: " +nomeArma +" | Dano: " +getDanoArma());
         System.out.println("Armadura: " +nomeArmadura +" | Durabilidade: " +getDurabilidadeArmadura());
+    }
+    public void analizarInimigo(Personagem inimigo) {
+        System.out.println("Nome: " +inimigo.getNome());
+        System.out.println("Vida: " +inimigo.getVida() +"/" +inimigo.getVidaMaxima());
+        System.out.println("Estamina: " +inimigo.getEstamina() +"/" +inimigo.getEstaminaMaxima());
+        System.out.println("Arma: " +nomeArma +" | Dano: " +inimigo.getDanoArma());
+        System.out.println("Armadura: " +nomeArmadura +" | Durabilidade: " +inimigo.getDurabilidadeArmadura());
     }
 
     public boolean curar() {
