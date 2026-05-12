@@ -248,7 +248,11 @@ abstract class Personagem {
             return false;
         }
         if(!estaVivo()) {
-            System.out.println("Não pode curar pois esta morto");
+            System.out.println("Não pode curar pois esta morto!");
+            return false;
+        }
+        if(getVida() == getVidaMaxima()) {
+            System.out.println("Você ja esta com a vida cheia!");
             return false;
         }
         int numero = random.nextInt(5) + 5;
