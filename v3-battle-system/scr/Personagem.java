@@ -74,7 +74,7 @@ abstract class Personagem {
 
     Personagem(String nome) {
         setNome(nome);
-        vida = random.nextInt(21) + 10;
+        vida = getVidaMaxima();
         estamina = getEstaminaMaxima();
     }
 
@@ -178,6 +178,7 @@ abstract class Personagem {
             if (getDurabilidadeArmadura() <= 0) {
 
                 removerVida(Math.abs(getDurabilidadeArmadura()));
+                armaduraAtual.aumentarDurabilidade((Math.abs(getDurabilidadeArmadura())));
             }
 
             removerVida((int) (dano * 0.3));
