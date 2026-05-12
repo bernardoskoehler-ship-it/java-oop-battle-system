@@ -35,4 +35,7 @@ public class Armaduras {
     public void diminuirDurabilidade(int valor) {
         durabilidade -= valor;
     }
+    public void aumentarDurabilidade(int valor) {
+        durabilidade += valor;
+    }
 }
