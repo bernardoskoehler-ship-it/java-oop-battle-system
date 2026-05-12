@@ -174,6 +174,7 @@ abstract class Personagem {
 
         Armaduras armaduraAtual = armadura.get(nomeArmadura);
 
+
         if (armaduraAtual != null && armaduraAtual.temArmadura()) {
 
             armaduraAtual.diminuirDurabilidade((int) (dano * 0.7));
@@ -236,7 +237,7 @@ abstract class Personagem {
         System.out.println(getNome() +" deu um Ataque Forte em " +alvo.getNome() +", ficando com " +alvo.getVida() +" de vida");
         return true;
     }
-    
+
     public void mostrarStatus() {
         System.out.println("Nome: " +getNome());
         System.out.println("Vida: " +getVida() +"/" +getVidaMaxima());
