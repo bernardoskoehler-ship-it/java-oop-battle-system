@@ -46,7 +46,6 @@ public class Menu {
         Inimigo inimigo = new Inimigo();
 
         sc.iniciarCombate(jogador, inimigo);
-
-
     }
+    
 }
