@@ -249,8 +249,8 @@ abstract class Personagem {
         System.out.println("Nome: " +inimigo.getNome());
         System.out.println("Vida: " +inimigo.getVida() +"/" +inimigo.getVidaMaxima());
         System.out.println("Estamina: " +inimigo.getEstamina() +"/" +inimigo.getEstaminaMaxima());
-        System.out.println("Arma: " +nomeArma +" | Dano: " +inimigo.getDanoArma());
-        System.out.println("Armadura: " +nomeArmadura +" | Durabilidade: " +inimigo.getDurabilidadeArmadura());
+        System.out.println("Arma: " +inimigo.nomeArma +" | Dano: " +inimigo.getDanoArma());
+        System.out.println("Armadura: " +inimigo.nomeArmadura +" | Durabilidade: " +inimigo.getDurabilidadeArmadura());
     }
 
     public boolean curar() {
