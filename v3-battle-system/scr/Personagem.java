@@ -12,8 +12,11 @@ abstract class Personagem {
     private int estamina;
     private int estaminaMaxima = 30;
 
+    private int pocoesDeCura = 1;
+
     private HashMap<String, Armas> arma = new HashMap<>();
     private String nomeArma;
+
     public boolean escolherArma(String nome) {
         nome = nome.toLowerCase();
         try {
@@ -30,13 +33,31 @@ abstract class Personagem {
         arma.put(nome, armaNova);
         nomeArma = nome;
     }
+
+    public int getDanoArma() {
+        if(nomeArma == null) {
+            return 0;
+        }
+        return arma.get(nomeArma).getDano();
+    }
+    public int getCustoEstaminaArma() {
+        if(nomeArma == null) {
+            return 0;
+        }
+        return arma.get(nomeArma).getGastoEstamina();
+    }
+
     private HashMap<String, Armaduras> armadura = new HashMap<>();
     private String nomeArmadura;
+
     public boolean escolherArmadura(String nome) {
         nome = nome.toLowerCase();
         try {
             armadura.put(nome, new Armaduras(nome));
             nomeArmadura = nome;
+            if(estamina > getEstaminaMaxima()) {
+                estamina = getEstaminaMaxima();
+            }
             return true;
 
         } catch (IllegalArgumentException e) {
@@ -44,11 +65,12 @@ abstract class Personagem {
             return false;
         }
     }
-    protected void equiparArmadura(String nome, Armaduras armaduraNova) {
-        armadura.put(nome, armaduraNova);
-        nomeArmadura = nome;
+    public int getDurabilidadeArmadura() {
+        if(nomeArmadura == null) {
+            return 0;
+        }
+        return armadura.get(nomeArmadura).getDurabilidade();
     }
-
 
     Personagem(String nome) {
         setNome(nome);
@@ -71,6 +93,9 @@ abstract class Personagem {
     public int getVida() {
         return vida;
     }
+    public int getVidaMaxima() {
+        return vidaMaxima;
+    }
 
     public int getEstamina() {
         return estamina;
@@ -79,6 +104,7 @@ abstract class Personagem {
         if(nomeArmadura == null) {
             return estaminaMaxima;
         }
+
         return estaminaMaxima - armadura.get(nomeArmadura).getGastoEstamina();
     }
 
@@ -149,9 +175,9 @@ abstract class Personagem {
 
             armaduraAtual.diminuirDurabilidade((int) (dano * 0.7));
 
-            if (armaduraAtual.getDurabilidade() <= 0) {
+            if (getDurabilidadeArmadura() <= 0) {
 
-                removerVida(Math.abs(armaduraAtual.getDurabilidade()));
+                removerVida(Math.abs(getDurabilidadeArmadura()));
             }
 
             removerVida((int) (dano * 0.3));
@@ -167,6 +193,7 @@ abstract class Personagem {
         }
         int numero = random.nextInt(11) + 10;
         adicionarEstamina(numero);
+        System.out.println(getNome() +" descansou e recuperou " +numero +" de estamina!");
         return true;
     }
 
@@ -178,14 +205,14 @@ abstract class Personagem {
             return false;
         }
 
-        if (!podeAtacar(alvo,
-                armaAtual.getGastoEstamina())) {
+        if (!podeAtacar(alvo, getCustoEstaminaArma())) {
 
             return false;
         }
 
-        alvo.calcularDano(armaAtual.getDano());
-        removerEstamina(armaAtual.getGastoEstamina());
+        alvo.calcularDano(getDanoArma());
+        removerEstamina(getCustoEstaminaArma());
+        System.out.println(getNome() +" deu um Ataque Fraco em " +alvo.getNome() +", ficando com " +alvo.getVida() +" de vida");
         return true;
     }
 
@@ -197,21 +224,36 @@ abstract class Personagem {
             return false;
         }
 
-        if (!podeAtacar(alvo,
-                armaAtual.getGastoEstamina() + 5)) {
+        if (!podeAtacar(alvo,getCustoEstaminaArma() + 5)) {
 
             return false;
         }
 
-        alvo.calcularDano(armaAtual.getDano() + 5);
-        removerEstamina(armaAtual.getGastoEstamina() + 5);
+        alvo.calcularDano(getDanoArma() + 5);
+        removerEstamina(getCustoEstaminaArma() + 5);
+        System.out.println(getNome() +" deu um Ataque Forte em " +alvo.getNome() +", ficando com " +alvo.getVida() +" de vida");
         return true;
     }
     public void mostrarStatus() {
         System.out.println("Nome: " +getNome());
         System.out.println("Vida: " +getVida() +"/" +getVidaMaxima());
         System.out.println("Estamina: " +getEstamina() +"/" +getEstaminaMaxima());
-        System.out.println("Arma: " +nomeArma);
-        System.out.println("Armadura: " +nomeArmadura);
+        System.out.println("Arma: " +nomeArma +" | Dano: " +getDanoArma());
+        System.out.println("Armadura: " +nomeArmadura +" | Durabilidade: " +getDurabilidadeArmadura());
+    }
+
+    public boolean curar() {
+        if(pocoesDeCura < 1) {
+            System.out.println("Não tem mais poçes de cura!");
+            return false;
+        }
+        if(!estaVivo()) {
+            System.out.println("Não pode curar pois esta morto");
+            return false;
+        }
+        int numero = random.nextInt(5) + 5;
+        adicionarVida(numero);
+        pocoesDeCura --;
+        return true;
     }
 }
